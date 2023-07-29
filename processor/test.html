@@ -27,18 +27,23 @@
 
         const FR = new FileReader();
 
-        FR.addEventListener("load", function(evt) {
+        FR.addEventListener("load", async function (evt) {
             let base64Image = evt.target.result;
             info.textContent = "Fetching";
 
-            fetch("http://127.0.0.1:5000/process", {
-                method: "POST",
-                headers: {'Content-Type': 'text/plain'},
-                body: JSON.stringify(base64Image)
-            }).then(async res => {
-                const responseData = await res.json();
-                info.textContent = "Success! Response: " + JSON.stringify(responseData);
-            });
+            try {
+                await fetch("http://127.0.0.1:5000/process", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(base64Image)
+                }).then(async res => {
+                    const responseData = await res.json();
+                    info.textContent = "Success! Response: " + JSON.stringify(responseData);
+                });
+            } catch {
+                info.textContent = "Error! Is the server running?";
+            }
+
         });
 
 

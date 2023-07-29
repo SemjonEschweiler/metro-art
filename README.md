@@ -1,6 +1,6 @@
-# Metro Cane
+# Metro art
 
-A project helping the visually impaired navigate the metro of Vienna.
+A project that helps the visually impaired from artwork throughout the metro.
 
 ## mobile
 

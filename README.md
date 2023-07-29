@@ -1,4 +1,4 @@
-# Metro art
+# Metro Art
 
 A project that helps the visually impaired from artwork throughout the metro.
 

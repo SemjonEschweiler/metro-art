@@ -16,7 +16,7 @@ def detect_aruco_ids_in_dir(directory):
         if filename.endswith('.png'):
             # Get the full path of the file
             image_path = os.path.join(directory, filename)
-            
+
             # Load the image
             image = cv2.imread(image_path)
 
@@ -31,11 +31,11 @@ def detect_aruco_ids_in_dir(directory):
                 print(f'Detected IDs in {filename}:', ids)
                 # draw a square around the markers
                 cv2.aruco.drawDetectedMarkers(image, corners, ids)
-                
+
                 # Display the resulting frame
                 cv2.imshow('frame', image)
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
 
 # Call the function providing the path to your directory
-detect_aruco_ids_in_dir('Aruco_Markers_50mm')
+detect_aruco_ids_in_dir('marker-images-50mm')

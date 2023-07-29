@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Metro Art Processor</h1>
+
+    <form id="form">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="*">
+        <input type="submit">
+    </form>
+
+    <p id="info">
+    </p>
+</body>
+
+<script>
+    let info = document.getElementById('info');
+    let form = document.getElementById("form");
+    function handleForm(event) {
+        event.preventDefault();
+
+        let img = document.getElementById('img');
+
+        let photo = img.files[0];
+
+        const FR = new FileReader();
+
+        FR.addEventListener("load", function(evt) {
+            let base64Image = evt.target.result;
+            info.textContent = "Fetching";
+
+            fetch("http://127.0.0.1:5000/process", {
+                method: "POST",
+                headers: {'Content-Type': 'text/plain'},
+                body: JSON.stringify(base64Image)
+            }).then(async res => {
+                const responseData = await res.json();
+                info.textContent = "Success! Response: " + JSON.stringify(responseData);
+            });
+        });
+
+
+        try {
+            FR.readAsDataURL(photo);
+        } catch {
+            info.textContent = "Error! Did you upload an image";
+        }
+    }
+    form.addEventListener('submit', handleForm);
+</script>
+
+</html>

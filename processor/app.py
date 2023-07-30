@@ -1,18 +1,13 @@
 import base64
 import cv2
 import flask
-import io
-import PIL
 import numpy
-from PIL import Image
 
 app = flask.Flask(__name__)
 
 def base64ToNp(imageAsBase64):
-    imgdata = base64.b64decode(imageAsBase64)
-    image = Image.open(io.BytesIO(imgdata))
-
-    return cv2.cvtColor(numpy.array(image), cv2.COLOR_BGR2RGB)
+    nparr = numpy.fromstring(base64.b64decode(imageAsBase64), numpy.uint8)
+    return cv2.cvtColor(nparr, cv2.COLOR_BGR2RGB)
 
 @app.route("/process", methods=["POST"])
 def process_image():

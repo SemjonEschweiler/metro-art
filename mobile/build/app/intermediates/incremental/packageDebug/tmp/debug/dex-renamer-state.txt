@@ -1,0 +1,4 @@
+#Sun Jul 30 05:58:29 CEST 2023
+base.0=C\:\\Users\\semjo\\OneDrive\\Documents\\Computing\\flutter\\hackathon-test-app\\metro-art\\mobile\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

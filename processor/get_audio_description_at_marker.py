@@ -17,7 +17,7 @@ def get_audio_description_at_marker(marker_id, corners):
 
     count = 0
     markers = {}
-    with open('marker-definitions/markers.csv', mode='r') as infile:
+    with open('marker-definitions/markers.csv', mode='r', encoding='utf-8') as infile:
         reader = csv.reader(infile)
         next(reader)
 

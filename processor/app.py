@@ -10,7 +10,9 @@ def process_image():
 
     # TODO: check if contains marker, if not return HTTP 404
 
-    # TODO: get audio description
+    # TODO: get id + corners of a marker in the image
+
+    # TODO: get audio description from id + corners
 
     response = jsonify({'audio-description': "placeholder"})
     response.headers.add('Access-Control-Allow-Origin', '*')

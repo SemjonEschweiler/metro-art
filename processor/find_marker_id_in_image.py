@@ -12,7 +12,7 @@ def find_marker_id_in_image(image):
     corners, ids, _ = detector.detectMarkers(image)
 
     if ids is not None:
-        return [ids[0][0], corners]
+        return [ids[0][0], corners[0][0]]
     else:
         return None, None
 

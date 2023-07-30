@@ -40,6 +40,8 @@ dependencies:
   get: ^4.3.6
   vibration: ^1.7.5
   flutter_reactive_ble: ^5.1.1
+  camera: ^0.10.5+2
+  dio: ^4.0.0
 
 
 dev_dependencies:

@@ -19,9 +19,9 @@ def process_image():
 
     id, corners = find_marker_id_in_image(openCvImage)
     if id is None and corners is None:
+        audioDescription = ""
+    else:
         audioDescription = get_audio_description_at_marker(id, corners)
-        if audioDescription is None:
-            audioDescription = ""
 
     response = flask.jsonify({'audio-description': str(audioDescription)})
     response.headers.add('Access-Control-Allow-Origin', '*')

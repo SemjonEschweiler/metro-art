@@ -10,8 +10,8 @@ def generate_marker(aruco_dict, marker_size, count):
 
 
 def main():
-   aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
-   generate_marker(aruco_dict, 10, 5)
+   aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
+   generate_marker(aruco_dict, 100, 5)
 
 if __name__ == "__main__":
    main()

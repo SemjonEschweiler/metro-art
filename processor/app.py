@@ -7,8 +7,8 @@ import output_ID
 app = flask.Flask(__name__)
 
 def base64ToNp(imageAsBase64):
-    nparr = numpy.fromstring(base64.b64decode(imageAsBase64), numpy.uint8)
-    return cv2.cvtColor(nparr, cv2.COLOR_BGR2RGB)
+    nparr = numpy.frombuffer(base64.b64decode(imageAsBase64), numpy.uint8)
+    return cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
 
 @app.route("/process", methods=["POST"])
 def process_image():

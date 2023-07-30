@@ -1,19 +1,16 @@
 import cv2
 from cv2 import aruco
 
-def detect_aruco_ids_in_image(image_path):
+def detect_aruco_ids_in_image(image):
     # Load the predefined dictionary
     aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_250)
 
     # Initialize the detector parameters using default values
     parameters = aruco.DetectorParameters()
 
-    # Load the image
-    image = cv2.imread(image_path)
-
     # Check if image is loaded
     if image is None:
-        print(f'Failed to load image from path: {image_path}')
+        print(f'Failed to load image from path: {image}')
         return
 
     # Convert the image to grayscale
@@ -27,7 +24,7 @@ def detect_aruco_ids_in_image(image_path):
 
     # If at least one marker detected
     if len(corners) > 0:
-        print(f'Detected IDs in {image_path}:', ids)
+        print(f'Detected IDs in {image}:', ids)
         # draw a square around the markers
         cv2.aruco.drawDetectedMarkers(image, corners, ids)
         

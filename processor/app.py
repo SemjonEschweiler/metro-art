@@ -23,3 +23,4 @@ def process_image():
     response = flask.jsonify({'audio-description': "placeholder"})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+app.run()

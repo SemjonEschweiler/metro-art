@@ -2,7 +2,7 @@ import base64
 import cv2
 import flask
 import numpy
-import output_ID
+import find_marker_id_in_image
 
 app = flask.Flask(__name__)
 
@@ -16,7 +16,7 @@ def process_image():
 
     # TODO: check if contains marker, if not return HTTP 404
     # TODO: get id + corners of a marker in the image
-    id, corners = output_ID.find_marker_id_in_image(openCvImage)
+    id, corners = find_marker_id_in_image.find_marker_id_in_image(openCvImage)
 
     # TODO: get audio description from id + corners
 

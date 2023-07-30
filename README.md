@@ -1,8 +1,8 @@
 # Metro Art
 
-A project that helps the visually impaired from artwork throughout the metro.
+A project that helps the visually impaired using artwork throughout the metro.
 
-Artwork placed throughout the floor in metro stations across Vienna; a person that is visually disabled can aim their phone at the ground with the high probability they will scan a marker on the ground with directions of where to go, the app will talk back with directions according to the orientation the phone is facing in.
+Artwork placed throughout the floor in metro stations across Vienna; a person that is visually disabled can aim their phone at the ground while walking along the floor guidance system, with a high probability they will scan a marker on the ground with directions of where to go, the app will talk back with directions according to the orientation the phone is facing in.
 
 ## 2 Modes
 - adventure mode

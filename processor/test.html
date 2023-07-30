@@ -18,7 +18,7 @@
 <script>
     let info = document.getElementById('info');
     let form = document.getElementById("form");
-    function handleForm(event) {
+    async function handleForm(event) {
         event.preventDefault();
 
         let img = document.getElementById('img');
@@ -27,30 +27,42 @@
 
         const FR = new FileReader();
 
-        FR.addEventListener("load", async function (evt) {
-            let base64Image = evt.target.result;
-            info.textContent = "Fetching";
-
-            try {
-                await fetch("http://127.0.0.1:5000/process", {
-                    method: "POST",
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify(base64Image)
-                }).then(async res => {
-                    const responseData = await res.json();
-                    info.textContent = "Success! Response: " + JSON.stringify(responseData);
-                });
-            } catch {
-                info.textContent = "Error! Is the server running?";
-            }
-
-        });
-
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+                    if ((encoded.length % 4) > 0) {
+                        encoded += '='.repeat(4 - (encoded.length % 4));
+                    }
+                    resolve(encoded);
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
 
         try {
-            FR.readAsDataURL(photo);
+            //FR.readAsDataURL(photo);
         } catch {
             info.textContent = "Error! Did you upload an image";
+        }
+
+        let base64Image = await getBase64(photo);
+
+        info.textContent = "Fetching";
+
+        try {
+            await fetch("http://127.0.0.1:5000/process", {
+                method: "POST",
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(base64Image)
+            }).then(async res => {
+                const responseData = await res.json();
+                info.textContent = "Success! Response: " + JSON.stringify(responseData);
+            });
+        } catch {
+            info.textContent = "Error! Is the server running?";
         }
     }
     form.addEventListener('submit', handleForm);

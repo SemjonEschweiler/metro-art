@@ -11,7 +11,7 @@ def marker_to_text(marker_id, corners):
     elif orientation >= 80 and orientation <= 100:
         #orientation = 270
         orientation = 2
-    elif orientation >= 170 and orientation <= 180 or orientation >=-180 and orientation <=-170 :
+    elif orientation >= 170 and orientation <= 181 or orientation >=-181 and orientation <=-170 :
         #orientation = 180
         orientation = 3
     elif orientation >= -100 and orientation <= -80:
@@ -21,9 +21,13 @@ def marker_to_text(marker_id, corners):
         print("None")
         return None
     print(orientation)
-    data = pd.read_csv("marker-definitions/markers.csv")
-    result = data.loc(marker_id+2, orientation)
+   #data = pd.read_csv("marker-definitions/markers.csv")
+   #result = data.loc(marker_id+1, orientation)
+    data = [["ID",0,90,180,270], [0, "U4 Richtung Heiligenstadt", "Am Ende des Bahnsteigs in Fahrtrichtung Heiligenstadt befindet sich der Ausgang Schottenring mit einer auf und abwärtsführenden Fahrtreppe und einer mittig liegenden Stiege.", "U4 Richtung Hütteldorf", "Am Ende des Bahnsteigs in Fahrtrichtung Hütteldorf befindet sich der Ausgang Salztorbrücke mit einer Stiege"], [1,"U4 Richtung Hütteldorf", "Am Ende des Bahnsteigs in Fahrtrichtung Hütteldorf befindet sich der Ausgang Salztorbrücke mit einer Stiege", "U4 Richtung Heiligenstadt.", "Am Ende des Bahnsteigs in Fahrtrichtung Heiligenstadt befindet sich der Ausgang Schottenring mit einer auf und abwärtsführenden Fahrtreppe und einer mittig liegenden Stiege."], [2,"U2 Richtung Schottenring", "Am Ende des Bahnsteigs in Fahrtrichtung Seestadt befindet sich der Ausgang Herminengasse mit einer Doppelliftgruppe und einer Stiege", "U2 Richtung Aspernstraße.", "Am Ende des Bahnsteigs in Fahrtrichtung Karlsplatz befindet sich der Zugang zum Ausgang Schottenring mit einer Doppelliftgruppe und einer Stiege sowie einer Dreifachfahrtreppe zur U4."], [3,"U2 Richtung Aspernstraße", "Am Ende des Bahnsteigs in Fahrtrichtung Karlsplatz befindet sich der Zugang zum Ausgang Schottenring mit einer Doppelliftgruppe und einer Stiege sowie einer Dreifachfahrtreppe zur U4.", "U2 Richtung Schottenring", "Am Ende des Bahnsteigs in Fahrtrichtung Seestadt befindet sich der Ausgang Herminengasse mit einer Doppelliftgruppe und einer Stiege."]]
+    
+    result = data[marker_id+1][orientation]
     print(result)
     return result
-    
-marker_to_text(1,[[0.1,0.1],[0.1,0.2]])
+
+
+#marker_to_text(1,[[0.1,0.0],[0.1,0.1]])

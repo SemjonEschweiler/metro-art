@@ -15,11 +15,13 @@ def base64ToNp(imageAsBase64):
 def process_image():
     openCvImage = base64ToNp(flask.request.data)
 
-    # TODO: check if contains marker, if not return HTTP 404
-    # TODO: get id + corners of a marker in the image
-    id, corners = find_marker_id_in_image(openCvImage)
+    audioDescription = ""
 
-    audioDescription = get_audio_description_at_marker(id, corners)
+    id, corners = find_marker_id_in_image(openCvImage)
+    if id is None and corners is None:
+        audioDescription = get_audio_description_at_marker(id, corners)
+        if audioDescription is None:
+            audioDescription = ""
 
     response = flask.jsonify({'audio-description': str(audioDescription)})
     response.headers.add('Access-Control-Allow-Origin', '*')

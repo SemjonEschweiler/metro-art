@@ -1,7 +1,7 @@
 import cv2
 from cv2 import aruco
 
-def detect_aruco_ids_in_image(image):
+def find_marker_id_in_image(image):
     aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_1000)
     parameters = aruco.DetectorParameters()
 

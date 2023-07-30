@@ -1,10 +1,10 @@
 import math
 import pandas as pd
 
-def marker_to_text(marker_id, corners):
+def get_audio_description_at_marker(marker_id, corners):
     orientation = math.atan2(corners[1][1]-corners[0][1],corners[1][0]-corners[0][0])
     orientation = 180*orientation/3.141592
-    #print(orientation)
+    print(orientation)
     if orientation >= -10 and orientation <= 10:
         #orientation = 0
         orientation = 1

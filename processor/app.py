@@ -16,11 +16,12 @@ def process_image():
 
     # TODO: check if contains marker, if not return HTTP 404
     # TODO: get id + corners of a marker in the image
-    output_ID.detect_aruco_ids_in_image(openCvImage)
+    id, corners = output_ID.detect_aruco_ids_in_image(openCvImage)
 
     # TODO: get audio description from id + corners
 
-    response = flask.jsonify({'audio-description': "placeholder"})
+    response = flask.jsonify({'id': str(id)}, {'corners': str(corners)})
+    # response = flask.jsonify({'audio-description': "placeholder"})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 app.run()

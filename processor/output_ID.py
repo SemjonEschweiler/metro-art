@@ -20,19 +20,11 @@ def detect_aruco_ids_in_image(image):
     detector = aruco.ArucoDetector(aruco_dict, parameters)
 
     # Detect the markers in the image
-    corners, ids, rejectedImgPoints = detector.detectMarkers(grayscale)
+    corners, ids, _ = detector.detectMarkers(grayscale)
+    print(corners)
 
-    # If at least one marker detected
-    if len(corners) > 0:
-        print(f'Detected IDs in {image}:', ids)
-        # draw a square around the markers
-        cv2.aruco.drawDetectedMarkers(image, corners, ids)
-        
-        # Display the resulting frame
-        cv2.imshow('frame', image)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    if ids is not None:
+        return [ids[0], corners]
     else:
-        # No Markers in Image
-        return None
+        return None, None
 
